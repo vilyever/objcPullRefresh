@@ -7,9 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FE6409DF1D581ED500652BAC /* objcPullRefresh.h in Headers */ = {isa = PBXBuildFile; fileRef = FE6409DE1D581ED500652BAC /* objcPullRefresh.h */; };
+		FE6409DF1D581ED500652BAC /* objcPullRefresh.h in Headers */ = {isa = PBXBuildFile; fileRef = FE6409DE1D581ED500652BAC /* objcPullRefresh.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FE6409E61D581ED500652BAC /* objcPullRefresh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE6409DB1D581ED500652BAC /* objcPullRefresh.framework */; };
 		FE6409EB1D581ED500652BAC /* objcPullRefreshTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FE6409EA1D581ED500652BAC /* objcPullRefreshTests.m */; };
+		FE6409F81D581EEA00652BAC /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = FE6409F51D581EEA00652BAC /* Cartfile */; };
+		FE6409F91D581EEA00652BAC /* objcImage.podspec in Resources */ = {isa = PBXBuildFile; fileRef = FE6409F61D581EEA00652BAC /* objcImage.podspec */; };
+		FE640A031D581EF400652BAC /* UIScrollView+VDPullRefresh.h in Headers */ = {isa = PBXBuildFile; fileRef = FE6409FB1D581EF400652BAC /* UIScrollView+VDPullRefresh.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FE640A041D581EF400652BAC /* UIScrollView+VDPullRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = FE6409FC1D581EF400652BAC /* UIScrollView+VDPullRefresh.m */; };
+		FE640A051D581EF400652BAC /* VDDefaultPullingView.h in Headers */ = {isa = PBXBuildFile; fileRef = FE6409FD1D581EF400652BAC /* VDDefaultPullingView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FE640A061D581EF400652BAC /* VDDefaultPullingView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE6409FE1D581EF400652BAC /* VDDefaultPullingView.m */; };
+		FE640A071D581EF400652BAC /* VDPullRefreshElement.h in Headers */ = {isa = PBXBuildFile; fileRef = FE6409FF1D581EF400652BAC /* VDPullRefreshElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FE640A081D581EF400652BAC /* VDPullRefreshElement.m in Sources */ = {isa = PBXBuildFile; fileRef = FE640A001D581EF400652BAC /* VDPullRefreshElement.m */; };
+		FE640A091D581EF400652BAC /* VDPullRefreshManager.h in Headers */ = {isa = PBXBuildFile; fileRef = FE640A011D581EF400652BAC /* VDPullRefreshManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FE640A0A1D581EF400652BAC /* VDPullRefreshManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FE640A021D581EF400652BAC /* VDPullRefreshManager.m */; };
+		FE640A0C1D581F5900652BAC /* objcKeyPath.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE640A0B1D581F5900652BAC /* objcKeyPath.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +40,18 @@
 		FE6409E51D581ED500652BAC /* objcPullRefreshTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = objcPullRefreshTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE6409EA1D581ED500652BAC /* objcPullRefreshTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = objcPullRefreshTests.m; sourceTree = "<group>"; };
 		FE6409EC1D581ED500652BAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE6409F51D581EEA00652BAC /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		FE6409F61D581EEA00652BAC /* objcImage.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = objcImage.podspec; sourceTree = "<group>"; };
+		FE6409F71D581EEA00652BAC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		FE6409FB1D581EF400652BAC /* UIScrollView+VDPullRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+VDPullRefresh.h"; sourceTree = "<group>"; };
+		FE6409FC1D581EF400652BAC /* UIScrollView+VDPullRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+VDPullRefresh.m"; sourceTree = "<group>"; };
+		FE6409FD1D581EF400652BAC /* VDDefaultPullingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDDefaultPullingView.h; sourceTree = "<group>"; };
+		FE6409FE1D581EF400652BAC /* VDDefaultPullingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDDefaultPullingView.m; sourceTree = "<group>"; };
+		FE6409FF1D581EF400652BAC /* VDPullRefreshElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDPullRefreshElement.h; sourceTree = "<group>"; };
+		FE640A001D581EF400652BAC /* VDPullRefreshElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDPullRefreshElement.m; sourceTree = "<group>"; };
+		FE640A011D581EF400652BAC /* VDPullRefreshManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDPullRefreshManager.h; sourceTree = "<group>"; };
+		FE640A021D581EF400652BAC /* VDPullRefreshManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDPullRefreshManager.m; sourceTree = "<group>"; };
+		FE640A0B1D581F5900652BAC /* objcKeyPath.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = objcKeyPath.framework; path = Carthage/Build/iOS/objcKeyPath.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE640A0C1D581F5900652BAC /* objcKeyPath.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,9 +77,13 @@
 		FE6409D11D581ED500652BAC = {
 			isa = PBXGroup;
 			children = (
+				FE640A0B1D581F5900652BAC /* objcKeyPath.framework */,
 				FE6409DD1D581ED500652BAC /* objcPullRefresh */,
 				FE6409E91D581ED500652BAC /* objcPullRefreshTests */,
 				FE6409DC1D581ED500652BAC /* Products */,
+				FE6409F51D581EEA00652BAC /* Cartfile */,
+				FE6409F61D581EEA00652BAC /* objcImage.podspec */,
+				FE6409F71D581EEA00652BAC /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -73,6 +101,14 @@
 			children = (
 				FE6409DE1D581ED500652BAC /* objcPullRefresh.h */,
 				FE6409E01D581ED500652BAC /* Info.plist */,
+				FE6409FB1D581EF400652BAC /* UIScrollView+VDPullRefresh.h */,
+				FE6409FC1D581EF400652BAC /* UIScrollView+VDPullRefresh.m */,
+				FE6409FD1D581EF400652BAC /* VDDefaultPullingView.h */,
+				FE6409FE1D581EF400652BAC /* VDDefaultPullingView.m */,
+				FE6409FF1D581EF400652BAC /* VDPullRefreshElement.h */,
+				FE640A001D581EF400652BAC /* VDPullRefreshElement.m */,
+				FE640A011D581EF400652BAC /* VDPullRefreshManager.h */,
+				FE640A021D581EF400652BAC /* VDPullRefreshManager.m */,
 			);
 			path = objcPullRefresh;
 			sourceTree = "<group>";
@@ -93,7 +129,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE640A071D581EF400652BAC /* VDPullRefreshElement.h in Headers */,
+				FE640A091D581EF400652BAC /* VDPullRefreshManager.h in Headers */,
 				FE6409DF1D581ED500652BAC /* objcPullRefresh.h in Headers */,
+				FE640A051D581EF400652BAC /* VDDefaultPullingView.h in Headers */,
+				FE640A031D581EF400652BAC /* UIScrollView+VDPullRefresh.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,6 +218,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE6409F91D581EEA00652BAC /* objcImage.podspec in Resources */,
+				FE6409F81D581EEA00652BAC /* Cartfile in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,6 +237,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE640A041D581EF400652BAC /* UIScrollView+VDPullRefresh.m in Sources */,
+				FE640A0A1D581EF400652BAC /* VDPullRefreshManager.m in Sources */,
+				FE640A081D581EF400652BAC /* VDPullRefreshElement.m in Sources */,
+				FE640A061D581EF400652BAC /* VDDefaultPullingView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,6 +360,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = objcPullRefresh/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -330,6 +380,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = objcPullRefresh/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

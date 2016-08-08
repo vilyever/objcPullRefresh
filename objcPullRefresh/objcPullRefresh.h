@@ -16,4 +16,7 @@ FOUNDATION_EXPORT const unsigned char objcPullRefreshVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <objcPullRefresh/PublicHeader.h>
 
-
+#import <objcPullRefresh/VDPullRefreshElement.h>
+#import <objcPullRefresh/VDDefaultPullingView.h>
+#import <objcPullRefresh/VDPullRefreshManager.h>
+#import <objcPullRefresh/UIScrollView+VDPullRefresh.h>
