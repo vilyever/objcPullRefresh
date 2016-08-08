@@ -1,17 +1,17 @@
 //
 //  VDDefaultPullingView.m
-//  objcTemp
+//  objcPullRefresh
 //
 //  Created by Deng on 16/7/21.
 //  Copyright © Deng. All rights reserved.
 //
 
 #import "VDDefaultPullingView.h"
-//#import "objcTemp.h"
-//@import objcTemp;
 
 
 @interface VDDefaultPullingView ()
+
+- (void)__i__initVDDefaultPullingView;
 
 @property (nonatomic, strong) UIActivityIndicatorView *indicatorView;
 @property (nonatomic, strong) UILabel *infoLabel;
@@ -63,7 +63,7 @@
 - (instancetype)init {
     self = [super init];
     
-    [self internalInitVDDefaultPullingView];
+    [self __i__initVDDefaultPullingView];
     
     return self;
 }
@@ -71,7 +71,7 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     
-    [self internalInitVDDefaultPullingView];
+    [self __i__initVDDefaultPullingView];
     
     return self;
 }
@@ -79,7 +79,7 @@
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     
-    [self internalInitVDDefaultPullingView];
+    [self __i__initVDDefaultPullingView];
     
     return self;
 }
@@ -163,7 +163,7 @@
 }
 
 #pragma mark Private Method
-- (void)internalInitVDDefaultPullingView {
+- (void)__i__initVDDefaultPullingView {
     
     [self addSubview:self.indicatorView];
     [self addSubview:self.infoLabel];

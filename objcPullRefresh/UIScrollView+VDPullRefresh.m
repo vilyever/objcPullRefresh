@@ -1,6 +1,6 @@
 //
 //  UIScrollView+VDPullRefresh.m
-//  objcTemp
+//  objcPullRefresh
 //
 //  Created by Deng on 16/7/20.
 //  Copyright © Deng. All rights reserved.
@@ -9,8 +9,6 @@
 #import "UIScrollView+VDPullRefresh.h"
 
 #import <objc/runtime.h>
-//#import "objcTemp.h"
-//@import objcTemp;
 
 
 @implementation UIScrollView (VDPullRefresh)
@@ -24,18 +22,18 @@
 @dynamic vd_isPullRefreshTrailerRefreshing;
 
 #pragma mark Public Method
-- (void)vd_enablePullRefreshHeaderWithAction:(void(^)(void))actionBlock {
+- (void)vd_enablePullRefreshHeaderWithAction:(void(^)(void))action {
     self.vd_isPullRefreshHeaderEnable = YES;
-    self.vd_pullRefreshElement.headerRefreshActionBlock = actionBlock;
+    self.vd_pullRefreshElement.headerRefreshAction = action;
 }
 
 - (void)vd_disablePullRefreshHeader {
     self.vd_isPullRefreshHeaderEnable = NO;
 }
 
-- (void)vd_enablePullRefreshTrailerWithAction:(void(^)(void))actionBlock {
+- (void)vd_enablePullRefreshTrailerWithAction:(void(^)(void))action {
     self.vd_isPullRefreshTrailerEnable = YES;
-    self.vd_pullRefreshElement.trailerRefreshActionBlock = actionBlock;
+    self.vd_pullRefreshElement.trailerRefreshAction = action;
 }
 
 - (void)vd_disablePullRefreshTrailder {

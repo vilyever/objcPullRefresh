@@ -1,6 +1,6 @@
 //
 //  VDPullRefreshManager.m
-//  objcTemp
+//  objcPullRefresh
 //
 //  Created by Deng on 16/7/20.
 //  Copyright © Deng. All rights reserved.
@@ -11,13 +11,14 @@
 
 @interface VDPullRefreshManager ()
 
+- (void)__i__initVDPullRefreshManager;
 
 @end
 
 
 @implementation VDPullRefreshManager
 
-#pragma mark Public Method
+#pragma mark Constructor
 + (VDPullRefreshManager *)sharedManager {
     static id _sharedInstance = nil;
     static dispatch_once_t onceToken;
@@ -28,6 +29,7 @@
     return _sharedInstance;
 }
 
+#pragma mark Public Method
 + (void)setupDefaultPullOrientation:(VDPullRefreshOrientation)defaultPullOrientation {
     [self sharedManager].defaultPullOrientation = defaultPullOrientation;
 }
@@ -40,25 +42,25 @@
     [self sharedManager].defaultTrailerPullingViewHeight = defaultTrailerPullingViewHeight;
 }
 
-+ (void)setupDefaultPullingHeaderViewBuilderBlock:(UIView<VDPullRefreshPullingHeaderView> *(^)(void))defaultPullingHeaderViewBuilderBlock {
-    [self sharedManager].defaultPullingHeaderViewBuilderBlock = defaultPullingHeaderViewBuilderBlock;
++ (void)setupDefaultPullingHeaderViewBuilder:(UIView<VDPullRefreshPullingHeaderView> *(^)(void))defaultPullingHeaderViewBuilder {
+    [self sharedManager].defaultPullingHeaderViewBuilder = defaultPullingHeaderViewBuilder;
 }
 
-+ (void)setupDefaultPullingTrailerViewBuilderBlock:(UIView<VDPullRefreshPullingTrailerView> *(^)(void))defaultPullingTrailerViewBuilderBlock {
-    [self sharedManager].defaultPullingTrailerViewBuilderBlock = defaultPullingTrailerViewBuilderBlock;
++ (void)setupDefaultPullingTrailerViewBuilder:(UIView<VDPullRefreshPullingTrailerView> *(^)(void))defaultPullingTrailerViewBuilder {
+    [self sharedManager].defaultPullingTrailerViewBuilder = defaultPullingTrailerViewBuilder;
 }
 
 + (UIView<VDPullRefreshPullingHeaderView> *)newDefaultHeaderPullingView {
-    if ([self sharedManager].defaultPullingHeaderViewBuilderBlock) {
-        return [self sharedManager].defaultPullingHeaderViewBuilderBlock();
+    if ([self sharedManager].defaultPullingHeaderViewBuilder) {
+        return [self sharedManager].defaultPullingHeaderViewBuilder();
     }
     
     return [VDDefaultPullingView pullingHeaderView];
 }
 
 + (UIView<VDPullRefreshPullingTrailerView> *)newDefaultTrailerPullingView {
-    if ([self sharedManager].defaultPullingTrailerViewBuilderBlock) {
-        return [self sharedManager].defaultPullingTrailerViewBuilderBlock();
+    if ([self sharedManager].defaultPullingTrailerViewBuilder) {
+        return [self sharedManager].defaultPullingTrailerViewBuilder();
     }
     
     return [VDDefaultPullingView pullingTrailerView];
@@ -71,7 +73,7 @@
 - (instancetype)init {
     self = [super init];
     
-    [self internalInitVDPullRefreshManager];
+    [self __i__initVDPullRefreshManager];
     
     return self;
 }
@@ -85,7 +87,7 @@
 
 
 #pragma mark Private Method
-- (void)internalInitVDPullRefreshManager {
+- (void)__i__initVDPullRefreshManager {
     _defaultPullOrientation = VDPullRefreshOrientationVertical;
     _defaultHeaderPullingViewHeight = 60.0f;
     _defaultTrailerPullingViewHeight = 60.0f;

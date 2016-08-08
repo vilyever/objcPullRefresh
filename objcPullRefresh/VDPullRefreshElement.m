@@ -1,6 +1,6 @@
 //
 //  VDPullRefreshElement.m
-//  objcTemp
+//  objcPullRefresh
 //
 //  Created by Deng on 16/7/20.
 //  Copyright © Deng. All rights reserved.
@@ -11,6 +11,27 @@
 
 
 @interface VDPullRefreshElement () <UIScrollViewDelegate>
+
+- (void)__i__initVDPullRefreshElement;
+
+- (void)__i__addScrollView:(UIScrollView *)scrollView;
+- (void)__i__removeScrollView:(UIScrollView *)scrollView;
+
+- (void)__i__addHeaderView;
+- (void)__i__addTrailerView;
+
+- (CGFloat)__i__getHeaderViewHeight;
+- (CGFloat)__i__getHeaderTriggerOffset;
+
+- (CGFloat)__i__getTrailerViewHeight;
+- (CGFloat)__i__getTrailerTriggerOffset;
+
+- (void)__i__layoutHeaderView;
+- (void)__i__layoutTrailerView;
+
+- (void)__i__updatRefreshingState:(BOOL)isEndDragging;
+
+- (void)__i__updateScrollViewLayout;
 
 @property (nonatomic, assign, readwrite) VDPullRefreshLayoutType headerLayoutType;
 @property (nonatomic, assign, readwrite) VDPullRefreshLayoutType trailerLayoutType;
@@ -30,15 +51,15 @@
 - (void)setScrollView:(UIScrollView *)scrollView {
     if (_scrollView != scrollView) {
         if (_scrollView) {
-            [self internalRemoveScrollView:_scrollView];
+            [self __i__removeScrollView:_scrollView];
         }
         
         _scrollView = scrollView;
         
         if (_scrollView) {
-            [self internalAddScrollView:_scrollView];
-            [self internalAddHeaderView];
-            [self internalAddTrailerView];
+            [self __i__addScrollView:_scrollView];
+            [self __i__addHeaderView];
+            [self __i__addTrailerView];
         }
     }
 }
@@ -47,7 +68,7 @@
     if (_headerPullingView != headerPullingView) {
         [_headerPullingView removeFromSuperview];
         _headerPullingView = headerPullingView;
-        [self internalAddHeaderView];
+        [self __i__addHeaderView];
     }
 }
 
@@ -55,7 +76,7 @@
     if (_trailerPullingView != trailerPullingView) {
         [_trailerPullingView removeFromSuperview];
         _trailerPullingView = trailerPullingView;
-        [self internalAddTrailerView];
+        [self __i__addTrailerView];
     }
 }
 
@@ -64,9 +85,9 @@
         _pullOrientation = pullOrientation;
         self.isHeaderRefreshing = NO;
         self.isTrailerRefreshing = NO;
-        [self internalLayoutHeaderView];
-        [self internalLayoutTrailerView];
-        [self internalUpdateScrollViewLayout];
+        [self __i__layoutHeaderView];
+        [self __i__layoutTrailerView];
+        [self __i__updateScrollViewLayout];
     }
 }
 
@@ -74,9 +95,9 @@
     if (_isHeaderPullingEnabled != isHeaderPullingEnabled) {
         _isHeaderPullingEnabled = isHeaderPullingEnabled;
         if (!_isHeaderPullingEnabled) {
-            [self internalSetIsHeaderRefreshing:NO];
+            [self __i__setIsHeaderRefreshing:NO];
         }
-        [self internalUpdateScrollViewLayout];
+        [self __i__updateScrollViewLayout];
         
         if ([self.pullRefreshDelegate respondsToSelector:@selector(pullRefreshElement:headerPullingEnableStateChange:)]) {
             [self.pullRefreshDelegate pullRefreshElement:self headerPullingEnableStateChange:_isHeaderPullingEnabled];
@@ -85,11 +106,11 @@
 }
 
 - (void)setIsHeaderRefreshing:(BOOL)isHeaderRefreshing {
-    [self internalSetIsHeaderRefreshing:isHeaderRefreshing];
-    [self internalUpdateScrollViewLayout];
+    [self __i__setIsHeaderRefreshing:isHeaderRefreshing];
+    [self __i__updateScrollViewLayout];
 }
 
-- (void)internalSetIsHeaderRefreshing:(BOOL)isHeaderRefreshing {
+- (void)__i__setIsHeaderRefreshing:(BOOL)isHeaderRefreshing {
     if (isHeaderRefreshing && !self.isHeaderPullingEnabled) {
         return;
     }
@@ -98,8 +119,8 @@
         _isHeaderRefreshing = isHeaderRefreshing;
         
         if (_isHeaderRefreshing
-            && self.headerRefreshActionBlock) {
-            self.headerRefreshActionBlock();
+            && self.headerRefreshAction) {
+            self.headerRefreshAction();
         }
         
         if ([self.pullRefreshDelegate respondsToSelector:@selector(pullRefreshElement:headerRefreshingStateChange:)]) {
@@ -112,9 +133,9 @@
     if (_isTrailerPullingEnabled != isTrailerPullingEnabled) {
         _isTrailerPullingEnabled = isTrailerPullingEnabled;
         if (!_isTrailerPullingEnabled) {
-            [self internalSetIsTrailerRefreshing:NO];
+            [self __i__setIsTrailerRefreshing:NO];
         }
-        [self internalUpdateScrollViewLayout];
+        [self __i__updateScrollViewLayout];
         
         if ([self.pullRefreshDelegate respondsToSelector:@selector(pullRefreshElement:trailerPullingEnableStateChange:)]) {
             [self.pullRefreshDelegate pullRefreshElement:self trailerPullingEnableStateChange:_isTrailerPullingEnabled];
@@ -123,11 +144,11 @@
 }
 
 - (void)setIsTrailerRefreshing:(BOOL)isTrailerRefreshing {
-    [self internalSetIsTrailerRefreshing:isTrailerRefreshing];
-    [self internalUpdateScrollViewLayout];
+    [self __i__setIsTrailerRefreshing:isTrailerRefreshing];
+    [self __i__updateScrollViewLayout];
 }
 
-- (void)internalSetIsTrailerRefreshing:(BOOL)isTrailerRefreshing {
+- (void)__i__setIsTrailerRefreshing:(BOOL)isTrailerRefreshing {
     if (isTrailerRefreshing && !self.isTrailerPullingEnabled) {
         return;
     }
@@ -135,8 +156,8 @@
     if (_isTrailerRefreshing != isTrailerRefreshing) {
         _isTrailerRefreshing = isTrailerRefreshing;
         if (_isTrailerRefreshing
-            && self.trailerRefreshActionBlock) {
-            self.trailerRefreshActionBlock();
+            && self.trailerRefreshAction) {
+            self.trailerRefreshAction();
         }
         
         if ([self.pullRefreshDelegate respondsToSelector:@selector(pullRefreshElement:trailerRefreshingStateChange:)]) {
@@ -149,33 +170,33 @@
 - (instancetype)init {
     self = [super init];
     
-    [self internalInitVDPullRefreshElement];
+    [self __i__initVDPullRefreshElement];
     
     return self;
 }
 
 - (void)dealloc {
-    [self internalRemoveScrollView:self.scrollView];
+    [self __i__removeScrollView:self.scrollView];
     self.scrollView = nil;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
-    [self internalLayoutHeaderView];
-    [self internalLayoutTrailerView];
+    [self __i__layoutHeaderView];
+    [self __i__layoutTrailerView];
     
     if ([keyPath isEqualToString:VDKeyPath(self.scrollView, contentOffset)]
         || [keyPath isEqualToString:VDKeyPath(self.scrollView, contentSize)]) {
         BOOL isEndDragging = self.isScrollViewDragging && !self.scrollView.isDragging;
         self.isScrollViewDragging = self.scrollView.isDragging;
         
-        [self internalUpdatRefreshingState:isEndDragging];
+        [self __i__updatRefreshingState:isEndDragging];
     }
 }
 
 #pragma mark Delegates
 
 #pragma mark Private Method
-- (void)internalInitVDPullRefreshElement {
+- (void)__i__initVDPullRefreshElement {
     _headerLayoutType = VDPullRefreshLayoutTypeShowAndLayoutInsideWhenRefreshing;
     _trailerLayoutType = VDPullRefreshLayoutTypeShowAndLayoutInsideWhenRefreshing;
     _isScrollViewDragging = NO;
@@ -185,13 +206,13 @@
     _animatingPullbackEnable = YES;
 }
 
-- (void)internalAddScrollView:(UIScrollView *)scrollView {
+- (void)__i__addScrollView:(UIScrollView *)scrollView {
     [scrollView addObserver:self forKeyPath:VDKeyPath(_scrollView, bounds) options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:NULL];
     [scrollView addObserver:self forKeyPath:VDKeyPath(_scrollView, contentOffset) options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:NULL];
     [scrollView addObserver:self forKeyPath:VDKeyPath(_scrollView, contentSize) options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:NULL];
 }
 
-- (void)internalRemoveScrollView:(UIScrollView *)scrollView {
+- (void)__i__removeScrollView:(UIScrollView *)scrollView {
     if (self.headerPullingView) {
         [self.headerPullingView removeFromSuperview];
     }
@@ -203,33 +224,33 @@
     [scrollView removeObserver:self forKeyPath:VDKeyPath(self.scrollView, contentSize)];
 }
 
-- (void)internalAddHeaderView {
+- (void)__i__addHeaderView {
     if (self.headerPullingView.superview == self.scrollView) {
         return;
     }
     if (self.scrollView && self.headerPullingView) {
         [self.headerPullingView removeFromSuperview];
         [self.scrollView addSubview:self.headerPullingView];
-        [self internalLayoutHeaderView];
+        [self __i__layoutHeaderView];
     }
 
     self.isHeaderPullingEnabled = self.headerPullingView != nil;
 }
 
-- (void)internalAddTrailerView {
+- (void)__i__addTrailerView {
     if (self.trailerPullingView.superview == self.scrollView) {
         return;
     }
     if (self.scrollView && self.trailerPullingView) {
         [self.trailerPullingView removeFromSuperview];
         [self.scrollView addSubview:self.trailerPullingView];
-        [self internalLayoutTrailerView];
+        [self __i__layoutTrailerView];
     }
     
     self.isTrailerPullingEnabled = self.trailerPullingView != nil;
 }
 
-- (CGFloat)internalGetHeaderViewHeight {
+- (CGFloat)__i__getHeaderViewHeight {
     if (!self.headerPullingView) {
         return 0.0f;
     }
@@ -242,12 +263,12 @@
     return height;
 }
 
-- (CGFloat)internalGetHeaderTriggerOffset {
+- (CGFloat)__i__getHeaderTriggerOffset {
     if (!self.headerPullingView) {
         return HUGE_VALF;
     }
     
-    CGFloat offset = [self internalGetHeaderViewHeight];
+    CGFloat offset = [self __i__getHeaderViewHeight];
     if ([self.headerPullingView respondsToSelector:@selector(triggerRefreshingOffsetForPullRefreshElement:)]) {
         offset = [self.headerPullingView triggerRefreshingOffsetForPullRefreshElement:self];
     }
@@ -255,7 +276,7 @@
     return offset;
 }
 
-- (CGFloat)internalGetTrailerViewHeight {
+- (CGFloat)__i__getTrailerViewHeight {
     if (!self.trailerPullingView) {
         return 0.0f;
     }
@@ -268,12 +289,12 @@
     return height;
 }
 
-- (CGFloat)internalGetTrailerTriggerOffset {
+- (CGFloat)__i__getTrailerTriggerOffset {
     if (!self.trailerPullingView) {
         return HUGE_VALF;
     }
     
-    CGFloat offset = [self internalGetTrailerViewHeight];
+    CGFloat offset = [self __i__getTrailerViewHeight];
     if ([self.trailerPullingView respondsToSelector:@selector(triggerRefreshingOffsetForPullRefreshElement:)]) {
         offset = [self.trailerPullingView triggerRefreshingOffsetForPullRefreshElement:self];
     }
@@ -284,9 +305,9 @@
     return offset;
 }
 
-- (void)internalLayoutHeaderView {
+- (void)__i__layoutHeaderView {
     if (self.headerPullingView) {
-        CGFloat height = [self internalGetHeaderViewHeight];
+        CGFloat height = [self __i__getHeaderViewHeight];
         switch (self.pullOrientation) {
             case VDPullRefreshOrientationVertical: {
                 self.headerPullingView.frame = CGRectMake(self.scrollView.contentOffset.x, -height, self.scrollView.bounds.size.width, height);
@@ -300,9 +321,9 @@
     }
 }
 
-- (void)internalLayoutTrailerView {
+- (void)__i__layoutTrailerView {
     if (self.trailerPullingView) {
-        CGFloat height = [self internalGetTrailerViewHeight];
+        CGFloat height = [self __i__getTrailerViewHeight];
         
         CGFloat contentWith = MAX(self.scrollView.contentSize.width, self.scrollView.bounds.size.width);
         CGFloat contentHeight = MAX(self.scrollView.contentSize.height, self.scrollView.bounds.size.height);
@@ -320,7 +341,7 @@
     }
 }
 
-- (void)internalUpdatRefreshingState:(BOOL)isEndDragging {
+- (void)__i__updatRefreshingState:(BOOL)isEndDragging {
     if (!self.scrollView) {
         return;
     }
@@ -342,8 +363,8 @@
     CGFloat rightOffset = contentOffset.x - (contentWith - self.scrollView.bounds.size.width);
     CGFloat bottomOffset = contentOffset.y - (contentHeight - self.scrollView.bounds.size.height);
     
-    CGFloat headerTriggerOffset = [self internalGetHeaderTriggerOffset];
-    CGFloat trailerTriggerOffset = [self internalGetTrailerTriggerOffset];
+    CGFloat headerTriggerOffset = [self __i__getHeaderTriggerOffset];
+    CGFloat trailerTriggerOffset = [self __i__getTrailerTriggerOffset];
     
     if (!self.isHeaderRefreshing) {
         BOOL canStartHeaderRefreshing = isEndDragging;
@@ -356,14 +377,14 @@
             case VDPullRefreshOrientationVertical: {
                 if (canStartHeaderRefreshing
                     && topOffset >= headerTriggerOffset) {
-                    [self internalSetIsHeaderRefreshing:self.isHeaderPullingEnabled];
+                    [self __i__setIsHeaderRefreshing:self.isHeaderPullingEnabled];
                 }
                 break;
             }
             case VDPullRefreshOrientationHorizontal: {
                 if (canStartHeaderRefreshing
                     && leftOffset >= headerTriggerOffset) {
-                    [self internalSetIsHeaderRefreshing:self.isHeaderPullingEnabled];
+                    [self __i__setIsHeaderRefreshing:self.isHeaderPullingEnabled];
                 }
                 break;
             }
@@ -381,24 +402,24 @@
             case VDPullRefreshOrientationVertical: {
                 if (canStartTrailerRefreshing
                     && bottomOffset >= trailerTriggerOffset) {
-                    [self internalSetIsTrailerRefreshing:self.isTrailerPullingEnabled];
+                    [self __i__setIsTrailerRefreshing:self.isTrailerPullingEnabled];
                 }
                 break;
             }
             case VDPullRefreshOrientationHorizontal: {
                 if (canStartTrailerRefreshing
                     && rightOffset >= trailerTriggerOffset) {
-                    [self internalSetIsTrailerRefreshing:self.isTrailerPullingEnabled];
+                    [self __i__setIsTrailerRefreshing:self.isTrailerPullingEnabled];
                 }
                 break;
             }
         }
     }
     
-    [self internalUpdateScrollViewLayout];
+    [self __i__updateScrollViewLayout];
 }
 
-- (void)internalUpdateScrollViewLayout {
+- (void)__i__updateScrollViewLayout {
     if (!self.scrollView) {
         return;
     }
@@ -441,14 +462,14 @@
         [self.headerPullingView removeFromSuperview];
     }
     else {
-        [self internalAddHeaderView];
+        [self __i__addHeaderView];
     }
     
     if (self.trailerLayoutType == VDPullRefreshLayoutTypeHide) {
         [self.trailerPullingView removeFromSuperview];
     }
     else {
-        [self internalAddTrailerView];
+        [self __i__addTrailerView];
     }
     
     UIEdgeInsets willChangeOffsetInsets = UIEdgeInsetsZero;
@@ -463,11 +484,11 @@
     if (isHeaderInside) {
         switch (self.pullOrientation) {
             case VDPullRefreshOrientationVertical: {
-                willChangeOffsetInsets.top = [self internalGetHeaderViewHeight];
+                willChangeOffsetInsets.top = [self __i__getHeaderViewHeight];
                 break;
             }
             case VDPullRefreshOrientationHorizontal: {
-                willChangeOffsetInsets.left = [self internalGetHeaderViewHeight];
+                willChangeOffsetInsets.left = [self __i__getHeaderViewHeight];
                 break;
             }
         }
@@ -495,11 +516,11 @@
     if (isTrailerInside) {
         switch (self.pullOrientation) {
             case VDPullRefreshOrientationVertical: {
-                willChangeOffsetInsets.bottom = [self internalGetTrailerViewHeight];
+                willChangeOffsetInsets.bottom = [self __i__getTrailerViewHeight];
                 break;
             }
             case VDPullRefreshOrientationHorizontal: {
-                willChangeOffsetInsets.right = [self internalGetTrailerViewHeight];
+                willChangeOffsetInsets.right = [self __i__getTrailerViewHeight];
                 break;
             }
         }

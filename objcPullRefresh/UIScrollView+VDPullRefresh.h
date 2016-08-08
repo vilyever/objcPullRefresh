@@ -1,6 +1,6 @@
 //
 //  UIScrollView+VDPullRefresh.h
-//  objcTemp
+//  objcPullRefresh
 //
 //  Created by Deng on 16/7/20.
 //  Copyright © Deng. All rights reserved.
@@ -14,9 +14,9 @@
 @interface UIScrollView (VDPullRefresh)
 
 #pragma mark Public Method
-- (void)vd_enablePullRefreshHeaderWithAction:(void(^)(void))actionBlock;
+- (void)vd_enablePullRefreshHeaderWithAction:(void(^)(void))action;
 - (void)vd_disablePullRefreshHeader;
-- (void)vd_enablePullRefreshTrailerWithAction:(void(^)(void))actionBlock;
+- (void)vd_enablePullRefreshTrailerWithAction:(void(^)(void))action;
 - (void)vd_disablePullRefreshTrailder;
 
 - (void)vd_startPullRefreshHeaderRefreshing;

@@ -8,30 +8,30 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = "objcImage"
+  s.name             = "objcPullRefresh"
   s.version          = "1.0.0"
-  s.summary          = "objcImage"
+  s.summary          = "objcPullRefresh"
   s.description      = <<-DESC
-                       objcImage
+                       objcPullRefresh
                        DESC
   s.homepage         = "https://github.com/vilyever"
 # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
   s.author           = { "vilyever" => "vilyever@gmail.com" }
-  s.source           = { :git => "https://github.com/vilyever/objcImage.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/vilyever/objcPullRefresh.git", :tag => s.version.to_s }
 # s.social_media_url = 'https://twitter.com/vilyever'
 
   s.platform     = :ios, '7.0'
   s.requires_arc = true
 
-  s.source_files = 'objcImage/**/*.{h,m}'
+  s.source_files = 'objcPullRefresh/**/*.{h,m}'
 # s.resource_bundles = {
-#   'objcImage' => ['objcImage/**/*.png']
+#   'objcPullRefresh' => ['objcPullRefresh/**/*.png']
 # }
 
-  s.public_header_files = 'objcImage/**/*.h'
+  s.public_header_files = 'objcPullRefresh/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
 
-#  s.dependency 'objcView'
+  s.dependency 'objcKeyPath'
 
 end

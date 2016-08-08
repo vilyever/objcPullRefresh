@@ -1,6 +1,6 @@
 //
 //  VDDefaultPullingView.h
-//  objcTemp
+//  objcPullRefresh
 //
 //  Created by Deng on 16/7/21.
 //  Copyright © Deng. All rights reserved.
@@ -23,6 +23,5 @@
 @property (nonatomic, assign) BOOL isTrailer;
 
 #pragma mark Private Method
-- (void)internalInitVDDefaultPullingView;
 
 @end

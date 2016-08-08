@@ -11,7 +11,7 @@
 		FE6409E61D581ED500652BAC /* objcPullRefresh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE6409DB1D581ED500652BAC /* objcPullRefresh.framework */; };
 		FE6409EB1D581ED500652BAC /* objcPullRefreshTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FE6409EA1D581ED500652BAC /* objcPullRefreshTests.m */; };
 		FE6409F81D581EEA00652BAC /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = FE6409F51D581EEA00652BAC /* Cartfile */; };
-		FE6409F91D581EEA00652BAC /* objcImage.podspec in Resources */ = {isa = PBXBuildFile; fileRef = FE6409F61D581EEA00652BAC /* objcImage.podspec */; };
+		FE6409F91D581EEA00652BAC /* objcPullRefresh.podspec in Resources */ = {isa = PBXBuildFile; fileRef = FE6409F61D581EEA00652BAC /* objcPullRefresh.podspec */; };
 		FE640A031D581EF400652BAC /* UIScrollView+VDPullRefresh.h in Headers */ = {isa = PBXBuildFile; fileRef = FE6409FB1D581EF400652BAC /* UIScrollView+VDPullRefresh.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FE640A041D581EF400652BAC /* UIScrollView+VDPullRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = FE6409FC1D581EF400652BAC /* UIScrollView+VDPullRefresh.m */; };
 		FE640A051D581EF400652BAC /* VDDefaultPullingView.h in Headers */ = {isa = PBXBuildFile; fileRef = FE6409FD1D581EF400652BAC /* VDDefaultPullingView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -41,7 +41,7 @@
 		FE6409EA1D581ED500652BAC /* objcPullRefreshTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = objcPullRefreshTests.m; sourceTree = "<group>"; };
 		FE6409EC1D581ED500652BAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE6409F51D581EEA00652BAC /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
-		FE6409F61D581EEA00652BAC /* objcImage.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = objcImage.podspec; sourceTree = "<group>"; };
+		FE6409F61D581EEA00652BAC /* objcPullRefresh.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = objcPullRefresh.podspec; sourceTree = "<group>"; };
 		FE6409F71D581EEA00652BAC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FE6409FB1D581EF400652BAC /* UIScrollView+VDPullRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+VDPullRefresh.h"; sourceTree = "<group>"; };
 		FE6409FC1D581EF400652BAC /* UIScrollView+VDPullRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+VDPullRefresh.m"; sourceTree = "<group>"; };
@@ -82,7 +82,7 @@
 				FE6409E91D581ED500652BAC /* objcPullRefreshTests */,
 				FE6409DC1D581ED500652BAC /* Products */,
 				FE6409F51D581EEA00652BAC /* Cartfile */,
-				FE6409F61D581EEA00652BAC /* objcImage.podspec */,
+				FE6409F61D581EEA00652BAC /* objcPullRefresh.podspec */,
 				FE6409F71D581EEA00652BAC /* README.md */,
 			);
 			sourceTree = "<group>";
@@ -218,7 +218,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE6409F91D581EEA00652BAC /* objcImage.podspec in Resources */,
+				FE6409F91D581EEA00652BAC /* objcPullRefresh.podspec in Resources */,
 				FE6409F81D581EEA00652BAC /* Cartfile in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -432,6 +432,7 @@
 				FE6409F11D581ED500652BAC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FE6409F21D581ED500652BAC /* Build configuration list for PBXNativeTarget "objcPullRefreshTests" */ = {
 			isa = XCConfigurationList;
@@ -440,6 +441,7 @@
 				FE6409F41D581ED500652BAC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

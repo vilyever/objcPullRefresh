@@ -1,14 +1,14 @@
-# objcImage
-objcImage
+# objcPullRefresh
+objcPullRefresh
 
 ## Import
 ### [CocoaPods](http://cocoapods.org)
 use_frameworks!
 </br>
-pod 'objcImage'
+pod 'objcPullRefresh'
 
 ### [Carthage](https://github.com/Carthage/Carthage)
-github "vilyever/objcImage" "master"
+github "vilyever/objcPullRefresh" "master"
 
 ## Usage
 

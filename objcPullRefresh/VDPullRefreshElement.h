@@ -1,6 +1,6 @@
 //
 //  VDPullRefreshElement.h
-//  objcTemp
+//  objcPullRefresh
 //
 //  Created by Deng on 16/7/20.
 //  Copyright © Deng. All rights reserved.
@@ -137,11 +137,10 @@ typedef NS_ENUM(NSInteger, VDPullRefreshLayoutType) {
 @property (nonatomic, assign, readonly) VDPullRefreshLayoutType headerLayoutType;
 @property (nonatomic, assign, readonly) VDPullRefreshLayoutType trailerLayoutType;
 
-@property (nonatomic, strong) void(^headerRefreshActionBlock)(void);
-@property (nonatomic, strong) void(^trailerRefreshActionBlock)(void);
+@property (nonatomic, strong) void(^headerRefreshAction)(void);
+@property (nonatomic, strong) void(^trailerRefreshAction)(void);
 
 #pragma mark Private Method
-- (void)internalInitVDPullRefreshElement;
 
 
 @end
